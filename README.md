@@ -4,24 +4,31 @@ A fast terminal folder picker with fuzzy search.
 
 ## Installation
 
-### 1. Install the binary
+### Option 1: Homebrew (macOS)
 
 ```bash
-# Build from source
+brew tap patrickmast/pf
+brew install pf
+pf --install
+source ~/.zshrc
+```
+
+### Option 2: Go install
+
+```bash
+go install github.com/patrickmast/pf@latest
+pf --install
+source ~/.zshrc
+```
+
+### Option 3: Build from source
+
+```bash
+git clone https://github.com/patrickmast/pf.git
+cd pf
 go build -o pf .
 cp pf /usr/local/bin/
-```
-
-### 2. Add shell function
-
-```bash
 pf --install
-```
-
-This adds the required shell function to your `~/.zshrc` (or `~/.bashrc`).
-
-Then reload your shell:
-```bash
 source ~/.zshrc
 ```
 
