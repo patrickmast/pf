@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+
+BINARY_NAME="tpf"
+INSTALL_PATH="/usr/local/bin"
+
+echo "Building terminal-pick-folder..."
+
+# Build for current platform
+go build -ldflags="-s -w" -o "$BINARY_NAME" .
+
+echo "Built: $BINARY_NAME"
+
+# Install to /usr/local/bin
+if [ -w "$INSTALL_PATH" ]; then
+    cp "$BINARY_NAME" "$INSTALL_PATH/"
+    echo "Installed to: $INSTALL_PATH/$BINARY_NAME"
+else
+    sudo cp "$BINARY_NAME" "$INSTALL_PATH/"
+    echo "Installed to: $INSTALL_PATH/$BINARY_NAME (with sudo)"
+fi
+
+echo ""
+echo "Done! Add this to your ~/.zshrc:"
+echo ""
+echo '# Terminal Pick Folder - snel naar een folder navigeren'
+echo 'pf() {'
+echo '  local dir'
+echo '  dir=$(tpf "$@")'
+echo '  if [[ -n "$dir" && -d "$dir" ]]; then'
+echo '    cd "$dir"'
+echo '  fi'
+echo '}'
+echo ""
+echo "Then run: source ~/.zshrc"
+echo ""
+echo "Usage: pf        # Start in current dir"
+echo "       pf ~/Dev  # Start in specific folder"
