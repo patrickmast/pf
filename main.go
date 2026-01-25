@@ -10,7 +10,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-const version = "1.1.2"
+const version = "1.1.3"
 
 type model struct {
 	items         []string
@@ -67,10 +67,22 @@ func loadDir(root string) ([]string, []string) {
 	dirMap := make(map[string]string)
 
 	for _, e := range entries {
-		if !e.IsDir() || strings.HasPrefix(e.Name(), ".") {
+		if strings.HasPrefix(e.Name(), ".") {
 			continue
 		}
 		if e.Name() == "node_modules" || e.Name() == "vendor" {
+			continue
+		}
+		// Check if it's a directory or a symlink to a directory
+		isDir := e.IsDir()
+		if !isDir && e.Type()&os.ModeSymlink != 0 {
+			// It's a symlink - check if target is a directory
+			targetPath := filepath.Join(root, e.Name())
+			if info, err := os.Stat(targetPath); err == nil && info.IsDir() {
+				isDir = true
+			}
+		}
+		if !isDir {
 			continue
 		}
 		dirs = append(dirs, e.Name())

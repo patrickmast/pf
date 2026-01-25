@@ -1,0 +1,27 @@
+{
+  "maxEntries" : 100,
+  "version" : 1,
+  "entries" : [
+    {
+      "id" : "23E47E7F-49AE-41FC-B7C8-A10D3923660E",
+      "command" : "sudo cp pf \/usr\/local\/bin\/pf",
+      "executedAt" : "2026-01-17T07:25:00Z",
+      "status" : "done",
+      "directory" : "\/Users\/patrickmast\/Dev\/terminal-pick-folder"
+    },
+    {
+      "id" : "FB64A52F-6CF5-4388-9047-68F32CFE32DE",
+      "command" : "Wat bedoel je met \"Om te installeren: sudo cp pf \/usr\/local\/bin\/pf\". pf is toch al geinstalleerd he, of moet ik dat nu opnieuw doen?",
+      "executedAt" : "2026-01-17T07:24:28Z",
+      "status" : "done",
+      "directory" : "\/Users\/patrickmast\/Dev\/terminal-pick-folder"
+    },
+    {
+      "id" : "F11C56A6-01C2-474A-A29A-A0383320C0C5",
+      "command" : "Kan je maken dat, als je Cmd+BackSpace drukt dat jet dan een folder kan WISSEN? Altijd met een vraag ter bevestiging natuurlijk!",
+      "executedAt" : "2026-01-17T07:10:27Z",
+      "status" : "done",
+      "directory" : "\/Users\/patrickmast\/Dev\/terminal-pick-folder"
+    }
+  ]
+}
